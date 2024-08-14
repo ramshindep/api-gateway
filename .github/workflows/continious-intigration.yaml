@@ -24,4 +24,13 @@ jobs:
        - name: perform google formatter check
          run: mvn com.spotify.fmt:fmt-maven-plugin:check
 
+       - name: GitLeaks Scan
+         uses: zricethezav/gitleaks-action@v1.3.0
+         with:
+          args: --path=.
+
+
+
+
+
   
