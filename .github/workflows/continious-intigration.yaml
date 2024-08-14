@@ -29,6 +29,16 @@ jobs:
          with:
           args: --path=.
 
+       - name: oss scan
+         run: mvn ossindex:audit
+         continue-on-error: true
+
+       - name: owasp Scan
+         if: false
+         run: mvn org.owasp:dependency-check-maven:check
+
+       - name: Build code and create docker images
+         run: mvn clean install docker:build
 
 
 
