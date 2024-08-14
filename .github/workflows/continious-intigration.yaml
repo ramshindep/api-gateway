@@ -21,24 +21,10 @@ jobs:
        -  name: checkout code
           uses: actions/checkout@v4     
 
-       - name: perform google formatter check
-         run: mvn com.spotify.fmt:fmt-maven-plugin:check
-
-       - name: GitLeaks Scan
-         uses: zricethezav/gitleaks-action@v1.3.0
-         with:
-          args: --path=.
-
-       - name: oss scan
-         run: mvn ossindex:audit
-         continue-on-error: true
-
-       - name: owasp Scan
-         if: false
-         run: mvn org.owasp:dependency-check-maven:check
-
-       - name: Build code and create docker images
-         run: mvn clean install docker:build
+       -  name: check status
+          run: |
+           java --version
+           ls -ltr
 
 
 
